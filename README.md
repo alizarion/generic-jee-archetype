@@ -49,4 +49,8 @@ Pas besoin d'installer wildfly maven le fera pour vous.
         ```mvn wildfly:run -Dwildfly.version=8.2.0.Final````
 
 
+# Todo
+completer le package spring avec les bonne libs(jpa, cdi, jax-rs, ejb)
+
+
 
