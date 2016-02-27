@@ -17,19 +17,27 @@ JDK 1.7 ou supérieur.
 une simple application permettant d'effectuer des opérations CRUD sur l'entité Person via des appels Rest.   
 
 un client angular permettant de la tester est disponible à cette adresse : 
-http://plnkr.co/edit/eHZ0dgTFmveJDIY71gUa?p=preview
+http://plnkr.co/edit/eHZ0dgTFmveJDIY71gUa?p=preview    
+
+## Business packages
+
+* `business-entities` : JPA entities and DAO.
+* `Service` : CDI injectable trasactional services
+* `tools` : Simple helper and tools classes.
+* `rest-api`: JAX-RS exposed Rest Endpoint
+* `persistence` : persistence.xml file for jpa entities
+
+## Deployable packages
+* `wildfly-package` : deployable war on wildfly
+* `springboot-package` :(TODO) deployagle springboot app
+* `tomcat-package` : (TODO) deployable war on tomcat 
+
 
 # L'objectit
 
-structurer les imports de nos projets afin de restreindre l'utilisation des frameworks a celle des standards jee dans le bu d'anihiler le risque d'adherence de notre code metier a une quelconque librairie.
-les package (rest-api,business-entities,ont pour seul dependance javaee
-seul les packages (wildfly-package et springboot-package) peuvent étendre les dépendances du parent avec des libs liés à leurs environnement de déploiement, cependant ces derniers ne doivent contenir aucune intelligence, aucun code fonctionnel.
-Dans notre exemple, les api JEE7 sont imposé par le POM parent, les packages (business-entities, rest-api, services) contienent notre code métier.
-
-l'application web est généré par wildfly-package.
-
-
-
+structurer les imports de nos projets afin de restreindre l'utilisation des frameworks aux standards JEE et réduire l'adhérence de nos projets à des librairies tierces.
+les package metiers ont pour seul dependance javaee
+les packages (wildfly-package et springboot-package) peuvent étendre les dépendances du parent avec des libs liés à leurs environnement de déploiement, ces derniers ne doivent contenir aucune intelligence, pas de code fonctionnel.
 
 
 # L'application utilise les standards suivants: 
