@@ -19,8 +19,10 @@ une simple application permettant d'effectuer des opérations CRUD sur l'entité
 un client angular permettant de la tester est disponible à cette adresse : 
 http://plnkr.co/edit/eHZ0dgTFmveJDIY71gUa?p=preview
 
-# L'objectif 
-L'ojectif de ce projet est de démontrer qu'il est possible de séparer les dépendances relatives aux environnement de déploiement du code de nos projets, en se basant sur l'héritage de dépendances de maven nous pouvons contraindre l'utilisation des libraire souhaité.   
+# L'objectit
+
+structurer les imports de nos projets afin de restreindre l'utilisation des frameworks a celle des standards jee dans le bu d'anihiler le risque d'adherence de notre code metier a une quelconque librairie.
+les package (rest-api,business-entities,ont pour seul dependance javaee
 seul les packages (wildfly-package et springboot-package) peuvent étendre les dépendances du parent avec des libs liés à leurs environnement de déploiement, cependant ces derniers ne doivent contenir aucune intelligence, aucun code fonctionnel.
 Dans notre exemple, les api JEE7 sont imposé par le POM parent, les packages (business-entities, rest-api, services) contienent notre code métier.
 
