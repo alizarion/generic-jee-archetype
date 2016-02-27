@@ -4,8 +4,8 @@ Simple projet, posposition de structure Maven permettant le multipackaging d'app
 
 
 #pré-requis: 
-Maven 3.1 ou supérieur.
-JDK 1.7 ou supérieur 
+Maven 3.1 ou supérieur.    
+JDK 1.7 ou supérieur. 
 
 # Build 
 * Téléchargez le projet.
