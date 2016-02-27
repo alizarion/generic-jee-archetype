@@ -50,7 +50,7 @@ Pas besoin d'installer wildfly maven le fera pour vous.
 
 
 # Todo
-completer le package spring avec les bonne libs(jpa, cdi, jax-rs, ejb)
+completer le package spring avec les bonnes libs(jpa, cdi, jax-rs, ejb)
 
 
 
