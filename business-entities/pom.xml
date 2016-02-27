@@ -1,4 +1,3 @@
-116 lines (97 sloc)  3.66 KB
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
@@ -7,13 +6,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>javaee7-essentials-pom</artifactId>
-        <groupId>com.alizarion.common</groupId>
+        <artifactId>javaee7-archetype</artifactId>
+        <groupId>io.github.alizarion.common</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.alizarion.common.persistence</groupId>
-    <artifactId>persistence</artifactId>
+    <groupId>io.github.alizarion.common.entities</groupId>
+    <artifactId>business-entities</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>Business Entities</name>
