@@ -17,17 +17,27 @@ JDK 1.7 ou supérieur.
 une simple application permettant d'effectuer des opérations CRUD sur l'entité Person via des appels Rest.   
 
 un client angular permettant de la tester est disponible à cette adresse : 
-http://plnkr.co/edit/eHZ0dgTFmveJDIY71gUa?p=preview
+http://plnkr.co/edit/eHZ0dgTFmveJDIY71gUa?p=preview    
 
-# L'objectif 
-L'ojectif de ce projet est de démontrer qu'il est possible de séparer les dépendances relatives aux environnement de déploiement du code de nos projets, en se basant sur l'héritage de dépendances de maven nous pouvons contraindre l'utilisation des libraire souhaité.   
-seul les packages (wildfly-package et springboot-package) peuvent étendre les dépendances du parent avec des libs liés à leurs environnement de déploiement, cependant ces derniers ne doivent contenir aucune intelligence, aucun code fonctionnel.
-Dans notre exemple, les api JEE7 sont imposé par le POM parent, les packages (business-entities, rest-api, services) contienent notre code métier.
+## Business packages
 
-l'application web est généré par wildfly-package.
+* `business-entities` : JPA entities and DAO.
+* `Service` : CDI injectable trasactional services
+* `tools` : Simple helper and tools classes.
+* `rest-api`: JAX-RS exposed Rest Endpoint
+* `persistence` : persistence.xml file for jpa entities
+
+## Deployable packages
+* `wildfly-package` : deployable war on wildfly
+* `springboot-package` :(TODO) deployagle springboot app
+* `tomcat-package` : (TODO) deployable war on tomcat 
 
 
+# L'objectit
 
+structurer les imports de des projets afin de restreindre l'utilisation des frameworks aux standards JEE et réduire l'adhérence du code à des librairies tierces.
+les package metiers ont pour seul dependance javaee
+les packages (wildfly-package et springboot-package) peuvent étendre les dépendances du parent avec des libs liés à leurs environnement de déploiement, ces derniers ne doivent contenir aucune intelligence, pas de code fonctionnel.
 
 
 # L'application utilise les standards suivants: 
