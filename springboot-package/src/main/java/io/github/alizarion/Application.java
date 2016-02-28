@@ -10,6 +10,7 @@ import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 
 import javax.inject.Named;
+import javax.ws.rs.ApplicationPath;
 
 /**
  * @author selim@openlinux.fr.
@@ -18,12 +19,13 @@ import javax.inject.Named;
 public class Application {
 
     @Named
+    @ApplicationPath("/rest")
     public static class JerseyConfig extends ResourceConfig {
 
         public JerseyConfig() {
+            this.register(JacksonFeature.class);
             this.register(PersonRessource.class);
 
-            this.register(JacksonFeature.class);
         }
     }
 
@@ -35,8 +37,6 @@ public class Application {
         registrationBean.setOrder(1);
         return registrationBean;
     }
-
-
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
