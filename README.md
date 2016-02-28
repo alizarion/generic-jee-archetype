@@ -70,7 +70,8 @@ Pas besoin d'installer wildfly maven le fera pour vous.
 * Téléchagez le projet
 * `cd generic-jee-archetype`  
 * `mvn clean install `  
-* `cd springboot-package`   
+* `cd springboot-package`  
+* `mvn clean install`
 * `mvn spring-boot:run`   
 
 
