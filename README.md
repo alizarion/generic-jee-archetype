@@ -35,7 +35,7 @@ http://plnkr.co/edit/eHZ0dgTFmveJDIY71gUa?p=preview
 
 # L'objectit
 
-structurer les imports de nos projets afin de restreindre l'utilisation des frameworks aux standards JEE et réduire l'adhérence de nos projets à des librairies tierces.
+structurer les imports de des projets afin de restreindre l'utilisation des frameworks aux standards JEE et réduire l'adhérence du code à des librairies tierces.
 les package metiers ont pour seul dependance javaee
 les packages (wildfly-package et springboot-package) peuvent étendre les dépendances du parent avec des libs liés à leurs environnement de déploiement, ces derniers ne doivent contenir aucune intelligence, pas de code fonctionnel.
 
