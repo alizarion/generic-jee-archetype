@@ -21,14 +21,12 @@ public class PersonRessource {
     EntityFacade facade;
 
     @GET
-    @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Person> findPersons(){
         return new ArrayList<>(facade.findAllPerson());
     }
 
     @PUT
-    @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Person updatePerson(Person person){
@@ -36,7 +34,6 @@ public class PersonRessource {
     }
 
     @POST
-    @Path("/")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Person createPerson(Person person){
