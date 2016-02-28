@@ -44,23 +44,34 @@ les packages (wildfly-package et springboot-package) peuvent étendre les dépen
 * JPA(Java Persistence) JSR-338 
 * JAX-RS 2.0 (Java API for RESTful Web Services) JSR 339
 * CDI (Contexts and Dependency Injection) JSR 346
-* EJB (Enterprise JavaBeans) JSR 220 
+* JTA : (JavaTM Transaction API) JSR 907
 
-
-# Les implémentations sous Wildly
+# Wildly
 * JPA : Hibernate.
 * JAX-RS : RestEasy
 * CDI : WELD
-* EJB : EJB3
+* Jta : 
 
-# Tester la version Wildfly : 
+## Tester la version Wildfly : 
 Pas besoin d'installer wildfly maven le fera pour vous.
 * Dans le répertoire wildfly-package, faites un    
         ```mvn wildfly:run -Dwildfly.version=8.2.0.Final````
 
 
-# Todo
-completer le package spring avec les bonnes libs(jpa, cdi, jax-rs, ejb)
+# Spring-boot 
+* JAX-RS : Jersey
+* JTA : Atomikos
+* JPA : Spring-data
+* CDI : HK2
+
+
+## Tester la version SpringBoot
+
+* Téléchagez le projet
+* `cd generic-jee-archetype`  
+* `mvn clean install `  
+* `cd springboot-package`   
+* `mvn spring-boot:run`   
 
 
 
