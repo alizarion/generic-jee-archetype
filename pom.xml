@@ -19,9 +19,10 @@
         <module>persistence</module>
         <module>services</module>
         <module>rest-api</module>
-        <module>wildfly-package</module>
         <module>tools</module>
-
+        <module>wildfly-package</module>
+        <module>springboot-package</module>
+        <module>tomcat-package</module>
     </modules>
 
    

@@ -30,12 +30,12 @@ http://plnkr.co/edit/rUcZDl04VALMbSgknLPl?p=preview
 ## Deployable packages
 * `wildfly-package` : deployable war on wildfly
 * `springboot-package` : deployagle springboot app
-* `tomcat-package` : (TODO) deployable war on tomcat 
+* `tomcat-package` : deployable war on tomcat 8
 
-# L'objectit
+# L'objectif
 
-Structurer les imports de des projets afin de restreindre l'utilisation des frameworks aux standards JEE et réduire l'adhérence du code à des librairies tierces.
-les package metiers ont pour seul dependance javaee
+Structurer les imports des projets afin de restreindre l'utilisation des frameworks aux standards JEE et réduire l'adhérence du code à des librairies tierces.
+les package metiers ont pour seul dépendance javaee
 les packages (wildfly-package et springboot-package) peuvent étendre les dépendances du parent avec des libs liés à leurs environnement de déploiement, ces derniers ne doivent contenir aucune intelligence, pas de code fonctionnel.
 
 # L'application utilise les standards suivants: 
@@ -73,4 +73,18 @@ Pas besoin d'installer wildfly maven le fera pour vous.
 * `mvn spring-boot:run`   
 
 
+# Tomcat
+* JAX-RS : Jersey
+* JTA : Atomikos
+* JPA : Hibernate
+* CDI : HK2
+
+## Tester la version SpringBoot
+
+* Téléchagez le projet
+* `cd generic-jee-archetype`
+* `mvn clean install `
+* `cd tomcat-package`
+* `mvn clean install`
+* `mvn tomcat7:run-war`
 
