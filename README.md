@@ -44,7 +44,7 @@ les packages (wildfly-package et springboot-package) peuvent étendre les dépen
 * CDI (Contexts and Dependency Injection) JSR 346
 * JTA : (JavaTM Transaction API) JSR 907
 
-# Wildly
+# Wildfly
 * JPA : Hibernate.
 * JAX-RS : RestEasy
 * CDI : WELD
@@ -79,7 +79,7 @@ Pas besoin d'installer wildfly maven le fera pour vous.
 * JPA : Hibernate
 * CDI : HK2
 
-## Tester la version SpringBoot
+## Tester la version Tomcat
 
 * Téléchagez le projet
 * `cd generic-jee-archetype`
