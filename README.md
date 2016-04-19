@@ -65,7 +65,7 @@ Pas besoin d'installer wildfly maven le fera pour vous.
 
 ## Tester la version SpringBoot
 
-* Téléchagez le projet
+* Téléchargez le projet
 * `cd generic-jee-archetype`  
 * `mvn clean install `  
 * `cd springboot-package`  
@@ -79,9 +79,9 @@ Pas besoin d'installer wildfly maven le fera pour vous.
 * JPA : Hibernate
 * CDI : HK2
 
-## Tester la version SpringBoot
+## Tester la version Tomcat
 
-* Téléchagez le projet
+* Téléchargez le projet
 * `cd generic-jee-archetype`
 * `mvn clean install `
 * `cd tomcat-package`
