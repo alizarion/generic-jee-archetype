@@ -76,7 +76,7 @@ Pas besoin d'installer wildfly maven le fera pour vous.
 # Tomcat
 * JAX-RS : Jersey
 * JTA : Atomikos
-* JPA : Hibernate
+* JPA : Spring-data
 * CDI : HK2
 
 ## Tester la version Tomcat
