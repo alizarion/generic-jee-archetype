@@ -7,9 +7,11 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.security.Key;
 import java.security.KeyStore;
+import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.Map;
 
@@ -22,14 +24,15 @@ public final class SecurityUtils {
 
     }
 
-    public static String createToken(final Map<String,String> claims){
+    public static String createToken(final Map<String,String> claims) throws IOException, NoSuchAlgorithmException {
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
 
         long nowMillis = System.currentTimeMillis();
         Date now = new Date(nowMillis);
 
         //We will sign our JWT with our ApiKey secret
-        byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(application.getSecret());
+        //byte[] apiKeySecretBytes = DatatypeConverter.parseBase64Binary(KeyStoreUtils.loadKey().);
+        byte[] apiKeySecretBytes = KeyStoreUtils.loadKey().getEncoded();
         Key signingKey = new SecretKeySpec(apiKeySecretBytes, signatureAlgorithm.getJcaName());
 
         //Let's set the JWT Claims

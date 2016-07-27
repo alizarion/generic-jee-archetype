@@ -21,22 +21,31 @@ public class KeyStoreUtils {
 
     private static final String ALGO = "HS512";
 
+    private static final File KEYSTORE =
+            new File(System.getProperty("java.io.tmp") +
+            File.separator + "it_secure.keystore");
+
        public static SecretKey generateKey() throws NoSuchAlgorithmException
        {
            return  MacProvider.generateKey();
        }
 
-       public static void saveKey(final SecretKey key, final File file) throws IOException
+       public static void saveKey(final SecretKey key) throws IOException
        {
            byte[] encoded = key.getEncoded();
            char[] hex = encodeHex(encoded);
            String data = String.valueOf(hex);
-           writeStringToFile(file, data);
+           writeStringToFile(KEYSTORE, data);
        }
 
-       public static SecretKey loadKey(final File file) throws IOException
-       {
-           String data = new String(readFileToByteArray(file));
+       public static SecretKey loadKey() throws
+               IOException,
+               NoSuchAlgorithmException {
+
+           if (!KEYSTORE.exists()){
+               saveKey(generateKey());
+           }
+           String data = new String(readFileToByteArray(KEYSTORE));
            char[] hex = data.toCharArray();
            byte[] encoded;
            try
@@ -49,7 +58,6 @@ public class KeyStoreUtils {
                e.printStackTrace();
                return null;
            }
-           SecretKey key = new SecretKeySpec(encoded, ALGO);
-           return key;
+           return new SecretKeySpec(encoded, ALGO);
        }
 }
