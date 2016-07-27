@@ -42,7 +42,12 @@ public class EntityFacade implements Serializable {
 
     @Transactional
     public Person mergePerson(final Person person){
-       return this.em.merge(person);
+        return this.em.merge(person);
+    }
+
+    @Transactional
+    public Groups mergeGroups(final Groups groups){
+        return this.em.merge(groups);
     }
 
     @Transactional

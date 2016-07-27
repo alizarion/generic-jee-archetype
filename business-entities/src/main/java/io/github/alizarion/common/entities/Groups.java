@@ -14,7 +14,7 @@ import java.util.List;
 @Entity
 @NamedQuery(name = Groups.FIND_ALL_GROUPS,
         query = "select p from Groups p")
-@Table(name = "group")
+@Table(name = "groups")
 @XmlAccessorType(XmlAccessType.NONE)
 public class Groups implements Serializable {
 
@@ -27,6 +27,7 @@ public class Groups implements Serializable {
     private Long id;
 
     @OneToMany
+    @XmlAttribute
     private List<Person> persons = new ArrayList<>();
 
     public Groups(){
@@ -35,6 +36,9 @@ public class Groups implements Serializable {
 
     public Groups(Person aPerson){
         this.persons.add(aPerson);
+    }
+    public Groups(Long aId){
+        this.id=aId;
     }
 
     public Long getId() {

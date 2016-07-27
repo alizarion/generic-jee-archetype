@@ -34,10 +34,26 @@ public class groupsRessources {
         return facade.findGroupByID(id);
     }
 
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Groups createGroups(Groups groups){
+        return facade.mergeGroups(groups);
+    }
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/test")
     public Groups testMethod(){
-        return new Groups(new Person("selim","bensenouci","selim@openlinux.fr"));
+        facade.mergePerson(new Person("selim","bensenouci","selim@openlinux.fr"));
+        facade.mergePerson(new Person("valentin","conan","vco@itesoft.com"));
+        facade.mergePerson(new Person("david","geslin","dge@itesoft.com"));
+        Groups lGroup = facade.findGroupByID(1L);
+        if (lGroup==null){
+            lGroup=new Groups(1L);
+        }
+        lGroup.getPersons().addAll(facade.findAllPerson());
+        facade.mergeGroups(lGroup);
+        return lGroup;
     }
 }
