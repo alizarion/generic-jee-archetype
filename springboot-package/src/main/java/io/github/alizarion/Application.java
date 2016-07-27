@@ -24,7 +24,7 @@ public class Application {
 
         public JerseyConfig() {
             this.register(JacksonFeature.class);
-            this.register(PersonRessource.class);
+            this.packages("io.github.alizarion.common.api");
 
         }
     }
