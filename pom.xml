@@ -14,11 +14,25 @@
         <module>rest-api</module>
         <module>tools</module>
         <module>wildfly-package</module>
+        <module>secure</module>
         <module>springboot-package</module>
     </modules>
     
     <dependencies>
-        
+
+        <dependency>
+                  <groupId>io.jsonwebtoken</groupId>
+                  <artifactId>jjwt</artifactId>
+                  <version>0.6.0</version>
+                  <scope>compile</scope>
+              </dependency>
+
+              <dependency>
+                  <groupId>commons-codec</groupId>
+                  <artifactId>commons-codec</artifactId>
+                  <version>1.10</version>
+                  <scope>compile</scope>
+              </dependency>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
