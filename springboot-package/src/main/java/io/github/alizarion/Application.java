@@ -1,6 +1,8 @@
 package io.github.alizarion;
 
 import io.github.alizarion.common.api.PersonRessource;
+import io.github.alizarion.common.secure.filter.AuthenticationFilter;
+import io.github.alizarion.common.secure.login.AbstractAuthenticate;
 import io.github.alizarion.common.tools.web.filters.AccessControlAllowOriginFilter;
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
@@ -25,6 +27,10 @@ public class Application {
         public JerseyConfig() {
             this.register(JacksonFeature.class);
             this.register(PersonRessource.class);
+            this.register(AbstractAuthenticate.class);
+            this.register(AuthenticationFilter.class);
+
+
 
         }
     }

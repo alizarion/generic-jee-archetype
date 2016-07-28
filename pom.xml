@@ -15,6 +15,7 @@
         <module>tools</module>
         <module>wildfly-package</module>
         <module>secure</module>
+        <module>it-secure</module>
         <module>springboot-package</module>
     </modules>
     

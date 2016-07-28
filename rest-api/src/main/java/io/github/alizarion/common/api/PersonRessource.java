@@ -3,6 +3,7 @@ package io.github.alizarion.common.api;
 import io.github.alizarion.common.entities.Person;
 import io.github.alizarion.common.services.EntityFacade;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.ws.rs.*;
@@ -22,6 +23,7 @@ public class PersonRessource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @RolesAllowed({"USER","ADMIN"})
     public List<Person> findPersons(){
         return new ArrayList<>(facade.findAllPerson());
     }
@@ -29,6 +31,7 @@ public class PersonRessource {
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
+    @RolesAllowed({"ADMIN"})
     public Person updatePerson(Person person){
         return facade.mergePerson(person);
     }
@@ -36,6 +39,7 @@ public class PersonRessource {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
+    @RolesAllowed({"ADMIN"})
     public Person createPerson(Person person){
         return facade.mergePerson(person);
     }
@@ -43,6 +47,7 @@ public class PersonRessource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id}")
+    @RolesAllowed({"USER"})
     public Person getPerson(@PathParam("id") Long id){
         return facade.findPersonByID(id);
     }

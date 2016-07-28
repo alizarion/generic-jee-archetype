@@ -13,7 +13,7 @@ public class SecurityUtilsTest {
 
     @Test
     public void createToken() throws IOException, NoSuchAlgorithmException {
-        String token = SecurityUtils.createToken(new HashMap<String,String>());
+        String token = SecurityUtils.createToken("selim","scpas",new HashMap<String,Object>());
         Assert.assertNotNull(token);
     }
 
