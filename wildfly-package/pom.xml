@@ -24,7 +24,7 @@
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>io.github.alizarion.config.secure</groupId>
+            <groupId>io.github.alizarion.common.config</groupId>
             <artifactId>secure</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
