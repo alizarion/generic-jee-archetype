@@ -9,6 +9,7 @@ import io.github.alizarion.common.secure.utils.SecurityUtils;
 import javax.inject.Named;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.security.Principal;
 import java.util.*;
 
 /**
@@ -43,6 +44,12 @@ public class SecurityProvider implements AuthenticationProvider {
         } catch (IOException | NoSuchAlgorithmException e) {
             throw new ApplicationError();
         }
+    }
+
+    @Override
+    public Principal getPrincipal(final Set<Map.Entry<String,Object>> claims ) {
+
+        return null;
     }
 
 

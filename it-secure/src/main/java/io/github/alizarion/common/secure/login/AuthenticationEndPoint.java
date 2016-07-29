@@ -14,16 +14,11 @@ import javax.ws.rs.core.Response;
  * @author sbn sbn
  */
 @Path("/authentication")
-public  class AbstractAuthenticate {
+public  class AuthenticationEndPoint {
 
     @Inject
     @AuthenticateProvider
     AuthenticationProvider authenticationProvider;
-
-    @PostConstruct
-    public void init(){
-        System.out.print("ttooo");
-    }
 
 
     @POST
@@ -38,6 +33,13 @@ public  class AbstractAuthenticate {
         } else {
             return   Response.status(Response.Status.FORBIDDEN).entity("{\"login\":\"ok\"}").build();
         }
+
+    }
+
+    @GET
+    @Path("/test")
+    public Response login(){
+       return Response.ok("{\"status\":\"ok\"}").build();
 
     }
 

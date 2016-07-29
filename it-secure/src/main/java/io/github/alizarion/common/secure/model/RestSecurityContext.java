@@ -14,21 +14,16 @@ public class RestSecurityContext implements SecurityContext{
 
     private Set<Map.Entry<String, Object>> claims;
 
-    private String jwtToken;
+    private Principal principal;
 
-    public RestSecurityContext(final Set<Map.Entry<String, Object>> claims,final String token) {
+    public RestSecurityContext(final Set<Map.Entry<String, Object>> claims,final Principal principal) {
         this.claims = claims;
-        this.jwtToken =  token;
+        this.principal =  principal;
     }
 
     @Override
     public Principal getUserPrincipal() {
-        return new Principal() {
-            @Override
-            public String getName() {
-                return jwtToken;
-            }
-        };
+        return principal;
     }
 
     @Override

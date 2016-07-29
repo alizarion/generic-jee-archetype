@@ -1,11 +1,14 @@
 package io.github.alizarion.common.secure.filter;
 
+import io.github.alizarion.common.secure.login.AuthenticateProvider;
+import io.github.alizarion.common.secure.login.AuthenticationProvider;
 import io.github.alizarion.common.secure.model.RestSecurityContext;
 import io.github.alizarion.common.secure.utils.SecurityUtils;
 
 import javax.annotation.Priority;
 import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
+import javax.inject.Inject;
 import javax.management.relation.Role;
 import javax.security.auth.login.LoginException;
 import javax.ws.rs.NotAuthorizedException;
@@ -20,6 +23,7 @@ import javax.ws.rs.ext.Provider;
 import java.io.IOException;
 import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Method;
+import java.security.Principal;
 import java.util.*;
 
 /**
@@ -31,6 +35,12 @@ public class AuthenticationFilter implements ContainerRequestFilter {
 
     @Context
     private ResourceInfo resourceInfo;
+
+
+    @Inject
+    @AuthenticateProvider
+    AuthenticationProvider authenticationProvider;
+
 
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
@@ -51,7 +61,17 @@ public class AuthenticationFilter implements ContainerRequestFilter {
             String token = getToken(requestContext);
             Set<Map.Entry<String,Object>> claims =
                     SecurityUtils.validateToken(token);
-            requestContext.setSecurityContext(new RestSecurityContext(claims,getToken(requestContext)));
+            Principal principal = authenticationProvider.getPrincipal(claims);
+
+            requestContext.setSecurityContext(
+                    new RestSecurityContext(claims,
+                            principal!= null ? principal :
+                    new Principal() {
+                @Override
+                public String getName() {
+                    return token;
+                }
+            }));
             if (methodRoles.size() > 0){
                 for(String role : methodRoles){
                     if (requestContext.getSecurityContext().isUserInRole(role)){
@@ -83,7 +103,8 @@ public class AuthenticationFilter implements ContainerRequestFilter {
             return  new HashSet<>();
 
         } else {
-            RolesAllowed rolesAllowed = annotatedElement.getAnnotation(RolesAllowed.class);
+            RolesAllowed rolesAllowed = annotatedElement
+                    .getAnnotation(RolesAllowed.class);
             Set<String> roles = new HashSet<>();
             if (rolesAllowed == null ) {
                 return roles;
