@@ -6,7 +6,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * @author selim@openlinux.fr.
@@ -38,14 +40,19 @@ public class Person implements Serializable {
     @Column(name = "email")
     private String email;
 
+    @XmlAttribute
+    @Column(name= "adresses")
+    private Set<Adress> adresses = new HashSet<Adress>();
+
     protected Person() {
 
     }
 
-    public Person(String firstName, String lastName, String email) {
+    public Person(String firstName, String lastName, String email, Set<Adress> a) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        adresses = a;
     }
 
 
@@ -80,6 +87,9 @@ public class Person implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public Set<Adress> getAdresses() {return adresses;}
+    public void setAdresses(Set<Adress> a) { adresses = a;}
 
     @Override
     public boolean equals(Object o) {
