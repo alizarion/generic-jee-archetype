@@ -1,5 +1,6 @@
 package io.github.alizarion.common.api;
 
+import io.github.alizarion.common.entities.Adress;
 import io.github.alizarion.common.entities.Person;
 import io.github.alizarion.common.services.EntityFacade;
 
@@ -34,6 +35,14 @@ public class PersonRessource {
     }
 
     @POST
+    @Path("/{id}/address")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Adress addAddress(Adress address, @PathParam("id") Long personId){
+        return this.facade.createAdress(personId,address);
+    }
+
+    @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Person createPerson(Person person){
@@ -51,6 +60,7 @@ public class PersonRessource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/test")
     public Person testMethod(){
-        return new Person("selim","bensenouci","selim@openlinux.fr");
+
+        return new Person("selim","bensenouci");
     }
 }

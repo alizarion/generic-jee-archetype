@@ -5,12 +5,10 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 /**
- * Created by Lucas CHABALIER on 31/01/2017.
+ * @author Lucas CHABALIER on 31/01/2017.
  */
 
 @Entity
@@ -23,31 +21,26 @@ public abstract class Adress implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @XmlAttribute
-    @Column(name = "person")
-    private Set<Person> persons = new HashSet<Person>();
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    private Person person;
 
-    public Adress(Set<Person> p) {
-        persons = p;
-    }
+
 
     public Long getId() {return id;}
-    public Set<Person> getPerson() { return persons;}
 
     public void setId(long id) { this.id = id;}
-    public void setPerson(Set<Person> person) { this.persons = person;}
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Adress adress = (Adress) o;
-        return Objects.equals(id, adress.id) &&
-                Objects.equals(persons, adress.persons);
+        return Objects.equals(id, adress.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, persons);
+        return Objects.hash(id);
     }
 }

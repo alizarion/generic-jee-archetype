@@ -48,18 +48,10 @@
             <scope>test</scope>
         </dependency>
 
-
-        <dependency>
-            <groupId>hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-            <version>1.8.0.7</version>
-            <scope>test</scope>
-        </dependency>
-
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>4.3.2.Final</version>
+            <version>4.3.6.Final</version>
             <scope>test</scope>
         </dependency>
 

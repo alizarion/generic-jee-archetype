@@ -5,7 +5,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -36,23 +35,18 @@ public class Person implements Serializable {
     @Column(name = "last_name")
     private String lastName;
 
-    @XmlAttribute
-    @Column(name = "email")
-    private String email;
 
+    @OneToMany(cascade = CascadeType.ALL)
     @XmlAttribute
-    @Column(name= "adresses")
-    private Set<Adress> adresses = new HashSet<Adress>();
+    private Set<Adress> adresses = new HashSet<>();
 
     protected Person() {
 
     }
 
-    public Person(String firstName, String lastName, String email, Set<Adress> a) {
+    public Person(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
-        adresses = a;
     }
 
 
@@ -80,13 +74,6 @@ public class Person implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public Set<Adress> getAdresses() {return adresses;}
     public void setAdresses(Set<Adress> a) { adresses = a;}
@@ -98,13 +85,12 @@ public class Person implements Serializable {
         Person person = (Person) o;
         return Objects.equals(id, person.id) &&
                 Objects.equals(firstName, person.firstName) &&
-                Objects.equals(lastName, person.lastName) &&
-                Objects.equals(email, person.email);
+                Objects.equals(lastName, person.lastName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, email);
+        return Objects.hash(id, firstName, lastName);
     }
 }
 

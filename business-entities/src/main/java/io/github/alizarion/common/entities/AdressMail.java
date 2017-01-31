@@ -9,7 +9,7 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
- * Created by Lucas CHABALIER on 31/01/2017.
+ * @author Lucas CHABALIER on 31/01/2017.
  */
 @Entity
 @Table(name="adress_mail")
@@ -22,8 +22,9 @@ public class AdressMail extends Adress implements Serializable{
     public String getMail() {return mail;}
     public void setMail(String mail) {this.mail = mail;}
 
-    public AdressMail(Set<Person> p, String mail) {
-        super(p);
+    public AdressMail() {}
+
+    public AdressMail(String mail) {
         this.mail = mail;
     }
 

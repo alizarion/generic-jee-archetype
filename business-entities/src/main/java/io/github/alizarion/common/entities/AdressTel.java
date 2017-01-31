@@ -9,7 +9,7 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
- * Created by Lucas CHABALIER on 31/01/2017.
+ * @author Lucas CHABALIER on 31/01/2017.
  */
 @Entity
 @Table(name="adress_tel")
@@ -22,8 +22,9 @@ public class AdressTel extends Adress implements Serializable {
     @Column(name="num")
     private String num;
 
-    public AdressTel(Set<Person> p, String pre, String n) {
-        super(p);
+    public AdressTel() {}
+
+    public AdressTel(String pre, String n) {
         prefixe = pre;
         num = n;
     }

@@ -7,10 +7,10 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
- * Created by Lucas CHABALIER on 31/01/2017.
+ * @author Lucas CHABALIER on 31/01/2017.
  */
 @NamedQuery(name = AdressPostal.FIND_ADRESS_POSTAL,
-            query="select a from adress_postal a")
+            query="select a from AdressPostal a")
 @Entity
 @Table(name="adress_postal")
 public class AdressPostal extends Adress implements Serializable {
@@ -42,8 +42,9 @@ public class AdressPostal extends Adress implements Serializable {
     public void setTown(String town) { this.town = town;}
     public void setCountry(String country) {this.country = country;}
 
-    public AdressPostal(Set<Person> p, String rue, String postalCode, String town, String country) {
-        super(p);
+    public AdressPostal() {}
+
+    public AdressPostal(String rue, String postalCode, String town, String country) {
         this.rue= rue;
         this.postalCode = postalCode;
         this.town = town;
