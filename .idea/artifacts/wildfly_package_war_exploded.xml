@@ -1,0 +1,33 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="wildfly-package:war exploded">
+    <output-path>$PROJECT_DIR$/wildfly-package/target/wildfly-package-1.0.0-SNAPSHOT</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="wildfly-package" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="archive" name="services-1.0.0-SNAPSHOT.jar">
+            <element id="module-output" name="services" />
+          </element>
+          <element id="archive" name="business-entities-1.0.0-SNAPSHOT.jar">
+            <element id="module-output" name="business-entities" />
+          </element>
+          <element id="archive" name="persistence-1.0.0-SNAPSHOT.jar">
+            <element id="module-output" name="persistence" />
+          </element>
+          <element id="archive" name="rest-api-1.0.0-SNAPSHOT.jar">
+            <element id="module-output" name="rest-api" />
+          </element>
+          <element id="archive" name="tools-1.0.0-SNAPSHOT.jar">
+            <element id="module-output" name="tools" />
+          </element>
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/wildfly-package/target/wildfly-package-1.0.0-SNAPSHOT/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="wildfly-package/web/Web" />
+    </root>
+  </artifact>
+</component>

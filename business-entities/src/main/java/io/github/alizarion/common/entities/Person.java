@@ -39,7 +39,7 @@ public class Person implements Serializable {
     private String email;
 
     protected Person() {
-        this.firstName = firstName;
+
     }
 
     public Person(String firstName, String lastName, String email) {
