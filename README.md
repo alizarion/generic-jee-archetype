@@ -17,7 +17,7 @@ JDK 1.7 ou supérieur.
 une simple application permettant d'effectuer des opérations CRUD sur l'entité Person via des appels Rest.   
 
 un client angular permettant de la tester est disponible à cette adresse : 
-http://plnkr.co/edit/rUcZDl04VALMbSgknLPl?p=preview   
+http://plnkr.co/edit/qzLz3AyOzs8JoA6fqFWR?p=preview  
 
 ## Business packages
 
