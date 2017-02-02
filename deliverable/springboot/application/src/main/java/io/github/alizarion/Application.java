@@ -16,7 +16,7 @@ import javax.inject.Named;
 import javax.ws.rs.ApplicationPath;
 
 /**
- * @author selim@openlinux.fr.
+ * @author selim@openlinux.fr
  */
 @SpringBootApplication
 @ComponentScan( {"io.github.alizarion"})
