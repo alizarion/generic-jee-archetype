@@ -1,7 +1,6 @@
 package io.github.alizarion.common.api;
 
-import io.github.alizarion.common.entities.Adress;
-import io.github.alizarion.common.entities.Person;
+import io.github.alizarion.common.entities.*;
 import io.github.alizarion.common.services.EntityFacade;
 
 import javax.inject.Inject;
@@ -9,7 +8,9 @@ import javax.inject.Named;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author selim@openlinux.fr.
@@ -35,11 +36,19 @@ public class PersonRessource {
     }
 
     @POST
-    @Path("/{id}/address")
+    @Path("/{id}/addresses")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Adress addAddress(Adress address, @PathParam("id") Long personId){
+    public Address addAddress(Address address, @PathParam("id") Long personId){
         return this.facade.createAdress(personId,address);
+    }
+
+    @GET
+    @Path("/{id}/addresses")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public List<Address> addAddress(@PathParam("id") Long personId){
+        return new ArrayList<>(this.facade.findAddressesByID(personId));
     }
 
     @POST
@@ -60,7 +69,10 @@ public class PersonRessource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/test")
     public Person testMethod(){
-
-        return new Person("selim","bensenouci");
+        Set<Address> s= new HashSet<>();
+        s.add(new AddressMail("mail@mail.com"));
+        s.add(new AddressTel("+33","69854125"));
+        s.add(new AddressPostal("15 rue de la fleur","34090","Mtp","France"));
+        return new Person("selim","bensenouci",s);
     }
 }

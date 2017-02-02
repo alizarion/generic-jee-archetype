@@ -1,7 +1,7 @@
 package io.github.alizarion.common.services;
 
 import io.github.alizarion.common.dao.PersonDao;
-import io.github.alizarion.common.entities.Adress;
+import io.github.alizarion.common.entities.Address;
 import io.github.alizarion.common.entities.Person;
 
 import javax.annotation.PostConstruct;
@@ -38,21 +38,34 @@ public class EntityFacade implements Serializable {
 
     @Transactional
     public Person mergePerson(final Person person){
-       return this.em.merge(person);
+
+        person.getAddresses();
+        return this.em.merge(person);
     }
 
     @Transactional
     public Set<Person> findAllPerson(){
-           return this.personDao.findAll();
+        /*Set<Person> s=  this.personDao.findAll();
+        for (Person p: s) {
+            p.getAdresses();
         }
+        return s;*/
+        return this.personDao.findAll();
+    }
 
     @Transactional
-    public Adress createAdress(Long personId, Adress adress) {
+    public Set<Address> findAddressesByID(Long personId) {
+        Person p = findPersonByID(personId);
+        return p.getAddresses();
+    }
+
+    @Transactional
+    public Address createAdress(Long personId, Address adress) {
         Person p = findPersonByID(personId);
         if(p != null) {
-            Set<Adress> s = p.getAdresses();
+            Set<Address> s = p.getAddresses();
             s.add(adress);
-            p.setAdresses(s);
+            p.setAddresses(s);
             this.mergePerson(p);
             return adress;
         }

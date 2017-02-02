@@ -58,11 +58,11 @@ public class PersistenceContextTest {
         EntityTransaction et = em.getTransaction();
         et.begin();
         Person newP = new Person("firstName","lastName");
-        Set<Adress> s= new HashSet<>();
-        s.add(new AdressMail("mail@mail.com"));
-        s.add(new AdressTel("+33","69854125"));
-        s.add(new AdressPostal("15 rue de la fleur","34090","Mtp","France"));
-        newP.setAdresses(s);
+        Set<Address> s= new HashSet<>();
+        s.add(new AddressMail("mail@mail.com"));
+        s.add(new AddressTel("+33","69854125"));
+        s.add(new AddressPostal("15 rue de la fleur","34090","Mtp","France"));
+        newP.setAddresses(s);
         em.persist(newP);
         et.commit();
     }
@@ -75,11 +75,11 @@ public class PersistenceContextTest {
         em.persist(newP);
 
         Person p = em.find(Person.class,Integer.toUnsignedLong(1));
-        Set<Adress> s= new HashSet<>();
-        s.add(new AdressMail("mail@mail.com"));
-        s.add(new AdressTel("+33","69854125"));
-        s.add(new AdressPostal("15 rue de la fleur","34090","Mtp","France"));
-        p.setAdresses(s);
+        Set<Address> s= new HashSet<>();
+        s.add(new AddressMail("mail@mail.com"));
+        s.add(new AddressTel("+33","69854125"));
+        s.add(new AddressPostal("15 rue de la fleur","34090","Mtp","France"));
+        p.setAddresses(s);
         em.merge(p);
 
         et.commit();

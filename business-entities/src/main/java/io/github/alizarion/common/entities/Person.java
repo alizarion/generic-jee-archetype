@@ -1,9 +1,7 @@
 package io.github.alizarion.common.entities;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
@@ -16,6 +14,7 @@ import java.util.Set;
 @NamedQuery(name = Person.FIND_ALL_PERSONS,
         query = "select p from Person p")
 @Table(name = "person")
+@XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
 public class Person implements Serializable {
 
@@ -36,9 +35,9 @@ public class Person implements Serializable {
     private String lastName;
 
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @XmlAttribute
-    private Set<Adress> adresses = new HashSet<>();
+    private Set<Address> addresses = new HashSet<>();
 
     protected Person() {
 
@@ -48,6 +47,13 @@ public class Person implements Serializable {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+
+    public Person(String firstName, String lastName,Set<Address> s) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        addresses = s;
+    }
+
 
 
     public Long getId() {
@@ -74,9 +80,9 @@ public class Person implements Serializable {
         this.lastName = lastName;
     }
 
-
-    public Set<Adress> getAdresses() {return adresses;}
-    public void setAdresses(Set<Adress> a) { adresses = a;}
+    @XmlElementRef
+    public Set<Address> getAddresses() {return addresses;}
+    public void setAddresses(Set<Address> a) { addresses = a;}
 
     @Override
     public boolean equals(Object o) {
@@ -85,12 +91,13 @@ public class Person implements Serializable {
         Person person = (Person) o;
         return Objects.equals(id, person.id) &&
                 Objects.equals(firstName, person.firstName) &&
-                Objects.equals(lastName, person.lastName);
+                Objects.equals(lastName, person.lastName) &&
+                Objects.equals(addresses, person.addresses);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName);
+        return Objects.hash(id, firstName, lastName,addresses);
     }
 }
 

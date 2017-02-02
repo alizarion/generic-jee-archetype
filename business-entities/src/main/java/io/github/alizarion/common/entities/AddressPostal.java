@@ -1,7 +1,7 @@
 package io.github.alizarion.common.entities;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.Set;
@@ -9,12 +9,17 @@ import java.util.Set;
 /**
  * @author Lucas CHABALIER on 31/01/2017.
  */
-@NamedQuery(name = AdressPostal.FIND_ADRESS_POSTAL,
-            query="select a from AdressPostal a")
+@NamedQuery(name = AddressPostal.FIND_ADRESS_POSTAL,
+            query="select a from AddressPostal a")
 @Entity
-@Table(name="adress_postal")
-public class AdressPostal extends Adress implements Serializable {
+@Table(catalog="address")
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlRootElement
+@XmlType(name=AddressPostal.POSTAL_ADDRESS_TYPE)
+@DiscriminatorValue(value = AddressPostal.POSTAL_ADDRESS_TYPE )
+public class AddressPostal extends Address implements Serializable {
     public static final String FIND_ADRESS_POSTAL = "AdressPostal.FIND_ADRESS_POSTAL";
+    public static final String POSTAL_ADDRESS_TYPE = "postal";
 
     @XmlAttribute
     @Column(name="rue")
@@ -42,9 +47,9 @@ public class AdressPostal extends Adress implements Serializable {
     public void setTown(String town) { this.town = town;}
     public void setCountry(String country) {this.country = country;}
 
-    public AdressPostal() {}
+    public AddressPostal() {}
 
-    public AdressPostal(String rue, String postalCode, String town, String country) {
+    public AddressPostal(String rue, String postalCode, String town, String country) {
         this.rue= rue;
         this.postalCode = postalCode;
         this.town = town;
@@ -56,7 +61,7 @@ public class AdressPostal extends Adress implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        AdressPostal that = (AdressPostal) o;
+        AddressPostal that = (AddressPostal) o;
         return Objects.equals(rue, that.rue) &&
                 Objects.equals(postalCode, that.postalCode) &&
                 Objects.equals(town, that.town) &&

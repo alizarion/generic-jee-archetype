@@ -1,19 +1,25 @@
 package io.github.alizarion.common.entities;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.util.Objects;
-import java.util.Set;
 
 /**
  * @author Lucas CHABALIER on 31/01/2017.
  */
 @Entity
-@Table(name="adress_tel")
-public class AdressTel extends Adress implements Serializable {
+@Table(catalog="address")
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType(name =AddressTel.TEL_ADDRESS_TYPE)
+@XmlRootElement
+@DiscriminatorValue(value = AddressTel.TEL_ADDRESS_TYPE )
+public class AddressTel extends Address implements Serializable {
+    public static final String TEL_ADDRESS_TYPE = "tel";
+
     @XmlAttribute
     @Column(name="prefixe")
     private String prefixe;
@@ -22,9 +28,9 @@ public class AdressTel extends Adress implements Serializable {
     @Column(name="num")
     private String num;
 
-    public AdressTel() {}
+    public AddressTel() {}
 
-    public AdressTel(String pre, String n) {
+    public AddressTel(String pre, String n) {
         prefixe = pre;
         num = n;
     }
@@ -38,8 +44,8 @@ public class AdressTel extends Adress implements Serializable {
     @Override
     public boolean equals(Object o) {
         if(this==o) return true;
-        if(!(o instanceof AdressMail)) return false;
-        AdressTel ap = (AdressTel) o;
+        if(!(o instanceof AddressMail)) return false;
+        AddressTel ap = (AddressTel) o;
         return Objects.equals(prefixe, ap.getPrefixe()) &&
                Objects.equals(num, ap.getNum());
     }
