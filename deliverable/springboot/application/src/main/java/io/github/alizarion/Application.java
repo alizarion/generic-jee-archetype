@@ -6,8 +6,11 @@ import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
+import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
 import javax.inject.Named;
 import javax.ws.rs.ApplicationPath;
@@ -16,18 +19,11 @@ import javax.ws.rs.ApplicationPath;
  * @author selim@openlinux.fr.
  */
 @SpringBootApplication
-public class Application {
+@ComponentScan( {"io.github.alizarion"})
+public class Application extends SpringBootServletInitializer {
 
-    @Named
-    @ApplicationPath("/rest")
-    public static class JerseyConfig extends ResourceConfig {
+    private static Class<Application> appClass = Application.class;
 
-        public JerseyConfig() {
-            this.register(JacksonFeature.class);
-            this.register(PersonRessource.class);
-
-        }
-    }
 
     @Bean
     public FilterRegistrationBean contextFilterRegistrationBean() {
@@ -36,6 +32,11 @@ public class Application {
         registrationBean.setFilter(contextFilter);
         registrationBean.setOrder(1);
         return registrationBean;
+    }
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(appClass);
     }
 
     public static void main(String[] args) {

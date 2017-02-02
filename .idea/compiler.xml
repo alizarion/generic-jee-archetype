@@ -7,10 +7,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="business-entities" />
+        <module name="deliverable-application" />
         <module name="persistence" />
         <module name="rest-api" />
         <module name="services" />
         <module name="spring-boot-package" />
+        <module name="springboot-app" />
+        <module name="springboot-fatjar" />
+        <module name="springboot-war" />
         <module name="tomcat-package" />
         <module name="tools" />
         <module name="wildfly-package" />
@@ -18,11 +22,17 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="business-entities" target="1.8" />
+      <module name="deliverable" target="1.8" />
+      <module name="deliverable-application" target="1.8" />
       <module name="javaee7-archetype" target="1.8" />
       <module name="persistence" target="1.8" />
       <module name="rest-api" target="1.8" />
       <module name="services" target="1.8" />
       <module name="spring-boot-package" target="1.8" />
+      <module name="springboot" target="1.6" />
+      <module name="springboot-app" target="1.6" />
+      <module name="springboot-fatjar" target="1.8" />
+      <module name="springboot-war" target="1.8" />
       <module name="tomcat-package" target="1.8" />
       <module name="tools" target="1.8" />
       <module name="wildfly-package" target="1.8" />

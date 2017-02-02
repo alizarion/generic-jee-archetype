@@ -3,14 +3,17 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/business-entities/business-entities.iml" filepath="$PROJECT_DIR$/business-entities/business-entities.iml" />
+      <module fileurl="file://$PROJECT_DIR$/deliverable/deliverable.iml" filepath="$PROJECT_DIR$/deliverable/deliverable.iml" />
       <module fileurl="file://$PROJECT_DIR$/javaee7-archetype.iml" filepath="$PROJECT_DIR$/javaee7-archetype.iml" />
       <module fileurl="file://$PROJECT_DIR$/persistence/persistence.iml" filepath="$PROJECT_DIR$/persistence/persistence.iml" />
       <module fileurl="file://$PROJECT_DIR$/rest-api/rest-api.iml" filepath="$PROJECT_DIR$/rest-api/rest-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/services/services.iml" filepath="$PROJECT_DIR$/services/services.iml" />
-      <module fileurl="file://$PROJECT_DIR$/springboot-package/spring-boot-package.iml" filepath="$PROJECT_DIR$/springboot-package/spring-boot-package.iml" />
-      <module fileurl="file://$PROJECT_DIR$/tomcat-package/tomcat-package.iml" filepath="$PROJECT_DIR$/tomcat-package/tomcat-package.iml" />
+      <module fileurl="file://$PROJECT_DIR$/deliverable/springboot/springboot.iml" filepath="$PROJECT_DIR$/deliverable/springboot/springboot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/deliverable/springboot/application/springboot-app.iml" filepath="$PROJECT_DIR$/deliverable/springboot/application/springboot-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/deliverable/springboot/fatjar/spring-boot-package.iml" filepath="$PROJECT_DIR$/deliverable/springboot/fatjar/spring-boot-package.iml" />
+      <module fileurl="file://$PROJECT_DIR$/deliverable/springboot/war/tomcat-package.iml" filepath="$PROJECT_DIR$/deliverable/springboot/war/tomcat-package.iml" />
       <module fileurl="file://$PROJECT_DIR$/tools/tools.iml" filepath="$PROJECT_DIR$/tools/tools.iml" />
-      <module fileurl="file://$PROJECT_DIR$/wildfly-package/wildfly-package.iml" filepath="$PROJECT_DIR$/wildfly-package/wildfly-package.iml" />
+      <module fileurl="file://$PROJECT_DIR$/deliverable/wildfly-package/wildfly-package.iml" filepath="$PROJECT_DIR$/deliverable/wildfly-package/wildfly-package.iml" />
     </modules>
   </component>
 </project>

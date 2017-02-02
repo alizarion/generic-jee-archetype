@@ -13,8 +13,7 @@
         <module>services</module>
         <module>rest-api</module>
         <module>tools</module>
-        <module>wildfly-package</module>
-        <module>springboot-package</module>
+        <module>deliverable</module>
     </modules>
     
     <dependencies>
