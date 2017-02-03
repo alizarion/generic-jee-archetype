@@ -13,7 +13,7 @@
     <groupId>io.github.alizarion.deliverable.springboot</groupId>
     <artifactId>deliverable-springboot</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <packaging>pom</packaging> <!-- ??? -->
+    <packaging>pom</packaging>
 
     <modules>
         <module>application</module>

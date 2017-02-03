@@ -21,6 +21,7 @@
         <start-class>io.github.alizarion.Application</start-class>
         <java.version>1.8</java.version>
         <project.finalName.archive>person</project.finalName.archive>
+        <docker.build.folder>../../../docker</docker.build.folder>
     </properties>
 
     <build>
@@ -60,6 +61,24 @@
                     <password>admin</password>
                     <port>8080</port>
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.4</version>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>verify</phase>
+                        <configuration>
+                            <tasks>
+                                <copy file="target/person.war" tofile="${docker.build.folder}/generic-app-springboot/webapps/person.war"/>
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
@@ -112,5 +131,4 @@
             <version>2.22.2</version>
         </dependency>
     </dependencies>
-
 </project>

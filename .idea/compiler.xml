@@ -24,6 +24,10 @@
       <module name="business-entities" target="1.8" />
       <module name="deliverable" target="1.8" />
       <module name="deliverable-application" target="1.8" />
+      <module name="generic-docker-image" target="1.8" />
+      <module name="generic-docker-image (1) (io.github.alizarion.common)" target="1.5" />
+      <module name="generic-docker-image-springboot" target="1.8" />
+      <module name="generic-docker-image-wildfly" target="1.8" />
       <module name="javaee7-archetype" target="1.8" />
       <module name="persistence" target="1.8" />
       <module name="rest-api" target="1.8" />

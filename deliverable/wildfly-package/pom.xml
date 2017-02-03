@@ -15,6 +15,12 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
+    <properties>
+        <docker.build.folder>../../docker</docker.build.folder>
+        <project.finalName.archive>person</project.finalName.archive>
+    </properties>
+
+
     <dependencies>
         <dependency>
             <groupId>io.github.alizarion.common.services</groupId>
@@ -46,6 +52,7 @@
     </dependencies>
 
     <build>
+        <finalName>${project.finalName.archive}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>
@@ -62,6 +69,24 @@
                         </commands>
                     </beforeDeployment>
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.4</version>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>verify</phase>
+                        <configuration>
+                            <tasks>
+                                <copy file="target/person.war" tofile="${docker.build.folder}/generic-app-wildfly/webapps/person.war"></copy>
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
