@@ -7,10 +7,10 @@
         http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
     <persistence-unit name="test" transaction-type="RESOURCE_LOCAL">
         <class>io.github.alizarion.common.entities.Person</class>
-        <class>io.github.alizarion.common.entities.Adress</class>
-        <class>io.github.alizarion.common.entities.AdressMail</class>
-        <class>io.github.alizarion.common.entities.AdressPostal</class>
-        <class>io.github.alizarion.common.entities.AdressTel</class>
+        <class>io.github.alizarion.common.entities.Address</class>
+        <class>io.github.alizarion.common.entities.AddressMail</class>
+        <class>io.github.alizarion.common.entities.AddressPostal</class>
+        <class>io.github.alizarion.common.entities.AddressTel</class>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
             <property name="hibernate.connection.url" value="jdbc:hsqldb:mem:unit-testing-jpa"/>

@@ -12,7 +12,6 @@ import java.util.Objects;
  * @author Lucas CHABALIER on 31/01/2017.
  */
 @Entity
-@Table(catalog="address")
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlType(name =AddressTel.TEL_ADDRESS_TYPE)
 @XmlRootElement

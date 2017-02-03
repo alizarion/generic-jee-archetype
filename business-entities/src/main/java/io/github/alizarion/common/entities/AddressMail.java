@@ -14,7 +14,6 @@ import java.util.Set;
  */
 @Entity
 @XmlAccessorType(XmlAccessType.NONE)
-@Table(catalog="address")
 @XmlType(name=AddressMail.EMAIL_ADDRESS_TYPE)
 @XmlRootElement
 @DiscriminatorValue(value = AddressMail.EMAIL_ADDRESS_TYPE )

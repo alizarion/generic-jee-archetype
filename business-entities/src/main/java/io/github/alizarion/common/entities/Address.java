@@ -27,16 +27,20 @@ public abstract class Address implements Serializable{
 
 
 
-    @ManyToOne
-    @JoinColumn(name = "person_id")
-    private Person person;
+     @ManyToOne(fetch = FetchType.EAGER)
+     @JoinColumn(name = "person_id")
+     private Person person;
+
 
     @Column(name = Address.ADDRESS_TYPE_COLUMN,updatable = false,insertable = false)
-    private String addressType;
+     private String addressType;
+
 
     public Long getId() {return id;}
 
     public void setId(long id) { this.id = id;}
+
+
 
     @Override
     public boolean equals(Object o) {

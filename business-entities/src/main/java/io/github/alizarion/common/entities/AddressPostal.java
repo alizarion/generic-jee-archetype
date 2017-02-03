@@ -12,7 +12,6 @@ import java.util.Set;
 @NamedQuery(name = AddressPostal.FIND_ADRESS_POSTAL,
             query="select a from AddressPostal a")
 @Entity
-@Table(catalog="address")
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlRootElement
 @XmlType(name=AddressPostal.POSTAL_ADDRESS_TYPE)

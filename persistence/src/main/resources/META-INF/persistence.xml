@@ -8,10 +8,10 @@
    <persistence-unit name="primary">
       <jta-data-source>java:/PersonDS</jta-data-source>
       <class>io.github.alizarion.common.entities.Person</class>
-      <class>io.github.alizarion.common.entities.Adress</class>
-      <class>io.github.alizarion.common.entities.AdressMail</class>
-      <class>io.github.alizarion.common.entities.AdressPostal</class>
-      <class>io.github.alizarion.common.entities.AdressTel</class>
+      <class>io.github.alizarion.common.entities.Address</class>
+      <class>io.github.alizarion.common.entities.AddressMail</class>
+      <class>io.github.alizarion.common.entities.AddressPostal</class>
+      <class>io.github.alizarion.common.entities.AddressTel</class>
       <properties>
            <property name="hibernate.hbm2ddl.auto" value="update"/>
       </properties>

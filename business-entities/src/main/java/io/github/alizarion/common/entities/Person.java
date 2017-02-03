@@ -35,7 +35,7 @@ public class Person implements Serializable {
     private String lastName;
 
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,targetEntity = Address.class)
     @XmlAttribute
     private Set<Address> addresses = new HashSet<>();
 
@@ -80,7 +80,7 @@ public class Person implements Serializable {
         this.lastName = lastName;
     }
 
-    @XmlElementRef
+
     public Set<Address> getAddresses() {return addresses;}
     public void setAddresses(Set<Address> a) { addresses = a;}
 
