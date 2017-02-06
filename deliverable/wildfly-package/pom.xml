@@ -79,7 +79,7 @@
                         <phase>verify</phase>
                         <configuration>
                             <tasks>
-                                <copy file="target/person.war" tofile="${docker.build.folder}/generic-app-wildfly/webapps/person.war"></copy>
+                                <copy file="target/person.war" tofile="${docker.build.folder}/generic-app-wildfly/init/jboss/wildfly/standalone/deployments/person.war"></copy>
                             </tasks>
                         </configuration>
                         <goals>

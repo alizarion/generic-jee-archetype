@@ -48,18 +48,27 @@ fi
 
 fi
 
-      JBOSS_HOME=/opt/wildfly
-      JBOSS_CLI=$JBOSS_HOME/bin/jboss-cli.sh
-      JBOSS_MODE=${1:-"standalone"}
-      JBOSS_CONFIG=${2:-"$JBOSS_MODE.xml"}
+JBOSS_HOME=/opt/jboss/wildfly
+JBOSS_CLI=$JBOSS_HOME/bin/jboss-cli.sh
+JBOSS_MODE=${1:-"standalone"}
+JBOSS_CONFIG=${2:-"$JBOSS_MODE.xml"}
 
-    echo "=> Starting WildFly server"
-      $JBOSS_HOME/bin/$JBOSS_MODE.sh -c $JBOSS_CONFIG >dev/null &
+echo "JBOSS_HOME  : " $JBOSS_HOME
+echo "JBOSS_CLI   : " $JBOSS_CLI
+echo "JBOSS_MODE  : " $JBOSS_MODE
+echo "JBOSS_CONFIG: " $JBOSS_CONFIG
 
-      echo "=> Waiting for the server to boot"
-      until `$JBOSS_CLI -c "ls /deployment" &> /dev/null`; do
-          sleep 1
-        done
+echo "=> Starting WildFly"
+$JBOSS_HOME/bin/$JBOSS_MODE.sh -b 0.0.0.0 -c $JBOSS_CONFIG \
+    -Dio.alizarion.datasource.driver.platform=$DATASOURCE_PLATFORM \
+    -Dio.alizarion.datasource.jndi=$DATASOURCE_JNDI \
+    -Dio.alizarion.datasource.name=$DATASOURCE_NAME \
+    -Dio.alizarion.datasource.connection.url=$DATASOURCE_CONNECTION \
+    -Dio.alizarion.datasource.security.user=$DATASOURCE_USER \
+    -Dio.alizarion.datasource.security.password=$DATASOURCE_PASSWORD
 
-$JBOSS_CLI data-source add --jndi-name=java:/PersonDS --name=PersonDS --connection-url=jdbc:h2:mem:test;DB_CLOSE_DELAY=-1 --driver-name=h2 --user-name=sa --password=sa
+
+
+
+
 

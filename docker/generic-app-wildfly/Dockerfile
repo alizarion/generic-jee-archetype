@@ -1,8 +1,5 @@
 FROM missiontomars.itesoft.com/itesoft/wildfly-8
 
-#edit app.war
-ADD webapps/ /opt/jboss/wildfly/standalone/deployments/
-
 #Ouverture port 8080
 EXPOSE 8080
 
