@@ -14,6 +14,7 @@
       <class>io.github.alizarion.common.entities.AddressTel</class>
       <properties>
            <property name="hibernate.hbm2ddl.auto" value="update"/>
+           <property name="hibernate.dialect" value="${io.alizarion.jpa.dialect}"/>
       </properties>
    </persistence-unit>
 

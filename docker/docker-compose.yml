@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+    persondb:
+       image: missiontomars.itesoft.com/itesoft/postgres-db
+       environment:
+         POSTGRES_PASSWORD : postgres
+         POSTGRES_USER : postgres
+         PGDATA : /var/lib/postgresql/data/persondata
+    person:
+       image: person:1.0.0-SNAPSHOT-springboot
+       depends_on:
+           - "persondb"
+       environment:
+          DATASOURCE_HOST : persondb
+          DATASOURCE_USER : postgres
+          DATASOURCE_PASSWORD : postgres
+          DATASOURCE_PORT : 5432
+          DATASOURCE_DDL : create
+          DATASOURCE_CATALOG : persons
+       ports:
+             - "8280:8080"

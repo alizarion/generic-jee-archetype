@@ -15,9 +15,10 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.alizarion.common.docker</groupId>
-    <artifactId>generic-docker-image</artifactId>
+    <artifactId>person-docker</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
+
 
     <dependencies>
     </dependencies>
@@ -31,7 +32,8 @@
                     <version>0.4.13</version>
                     <configuration>
                         <imageTags>
-                            <imageTag>${project.version}</imageTag>
+                            <imageTag>${project.version}${instance.name}</imageTag>
+
                             <imageTag>latest</imageTag>
                         </imageTags>
                         <serverId>registry-itesoft</serverId>
@@ -45,11 +47,17 @@
                     <executions>
 
                         <execution>
+
                             <id>build-image</id>
                             <phase>package</phase>
                             <goals>
                                 <goal>build</goal>
                             </goals>
+                            <configuration>
+                              <imageTags>
+                                  <imageTag>${project.version}${instance.name}</imageTag>
+                              </imageTags>
+                            </configuration>
                         </execution>
                         <execution>
                             <id>tag-version</id>
@@ -58,8 +66,8 @@
                                 <goal>tag</goal>
                             </goals>
                             <configuration>
-                                <image>${project.artifactId}:${project.version}</image>
-                                <newName>${project.artifactId}:${project.version}</newName>
+                                <image>${project.artifactId}:${project.version}${instance.name}</image>
+                                <newName>${project.artifactId}:${project.version}${instance.name}</newName>
                             </configuration>
                         </execution>
                         <execution>
