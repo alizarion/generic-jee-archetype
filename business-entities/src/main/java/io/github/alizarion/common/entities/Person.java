@@ -35,10 +35,6 @@ public class Person implements Serializable {
     private String lastName;
 
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,targetEntity = Address.class)
-    @XmlAttribute
-    private Set<Address> addresses = new HashSet<>();
-
     protected Person() {
 
     }
@@ -46,12 +42,6 @@ public class Person implements Serializable {
     public Person(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-    }
-
-    public Person(String firstName, String lastName,Set<Address> s) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        addresses = s;
     }
 
 
@@ -81,9 +71,6 @@ public class Person implements Serializable {
     }
 
 
-    public Set<Address> getAddresses() {return addresses;}
-    public void setAddresses(Set<Address> a) { addresses = a;}
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -91,13 +78,12 @@ public class Person implements Serializable {
         Person person = (Person) o;
         return Objects.equals(id, person.id) &&
                 Objects.equals(firstName, person.firstName) &&
-                Objects.equals(lastName, person.lastName) &&
-                Objects.equals(addresses, person.addresses);
+                Objects.equals(lastName, person.lastName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName,addresses);
+        return Objects.hash(id, firstName, lastName);
     }
 }
 

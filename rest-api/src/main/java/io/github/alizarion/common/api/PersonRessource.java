@@ -36,22 +36,6 @@ public class PersonRessource {
     }
 
     @POST
-    @Path("/{id}/addresses")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Address addAddress(Address address, @PathParam("id") Long personId){
-        return this.facade.createAdress(personId,address);
-    }
-
-    @GET
-    @Path("/{id}/addresses")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public List<Address> addAddress(@PathParam("id") Long personId){
-        return new ArrayList<>(this.facade.findAddressesByID(personId));
-    }
-
-    @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Person createPerson(Person person){
@@ -69,10 +53,6 @@ public class PersonRessource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/test")
     public Person testMethod(){
-        Set<Address> s= new HashSet<>();
-        s.add(new AddressMail("mail@mail.com"));
-        s.add(new AddressTel("+33","69854125"));
-        s.add(new AddressPostal("15 rue de la fleur","34090","Mtp","France"));
-        return new Person("selim","bensenouci",s);
+        return new Person("selim","bensenouci");
     }
 }
