@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="wildfly-package:war">
-    <output-path>$PROJECT_DIR$/deliverable/wildfly-package/target</output-path>
-    <root id="archive" name="person.war">
-      <element id="artifact" artifact-name="wildfly-package:war exploded" />
-    </root>
-  </artifact>
-</component>
