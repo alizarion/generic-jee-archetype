@@ -19,4 +19,4 @@ services:
           DATASOURCE_DDL : create
           DATASOURCE_CATALOG : persons
        ports:
-             - "8280:8080"
+             - "8080:8080"
