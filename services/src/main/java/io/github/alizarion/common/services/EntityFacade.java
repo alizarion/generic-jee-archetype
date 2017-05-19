@@ -37,11 +37,16 @@ public class EntityFacade implements Serializable {
 
     @Transactional
     public Person mergePerson(final Person person){
-       return this.em.merge(person);
+        return this.em.merge(person);
     }
 
     @Transactional
     public Set<Person> findAllPerson(){
-           return this.personDao.findAll();
+        /*Set<Person> s=  this.personDao.findAll();
+        for (Person p: s) {
+            p.getAdresses();
         }
+        return s;*/
+        return this.personDao.findAll();
+    }
 }

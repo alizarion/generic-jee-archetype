@@ -1,12 +1,11 @@
 package io.github.alizarion.common.entities;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * @author selim@openlinux.fr.
@@ -15,6 +14,7 @@ import java.util.Objects;
 @NamedQuery(name = Person.FIND_ALL_PERSONS,
         query = "select p from Person p")
 @Table(name = "person")
+@XmlRootElement
 @XmlAccessorType(XmlAccessType.NONE)
 public class Person implements Serializable {
 
@@ -34,19 +34,16 @@ public class Person implements Serializable {
     @Column(name = "last_name")
     private String lastName;
 
-    @XmlAttribute
-    @Column(name = "email")
-    private String email;
 
     protected Person() {
-        this.firstName = firstName;
+
     }
 
-    public Person(String firstName, String lastName, String email) {
+    public Person(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
     }
+
 
 
     public Long getId() {
@@ -73,13 +70,6 @@ public class Person implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -88,13 +78,12 @@ public class Person implements Serializable {
         Person person = (Person) o;
         return Objects.equals(id, person.id) &&
                 Objects.equals(firstName, person.firstName) &&
-                Objects.equals(lastName, person.lastName) &&
-                Objects.equals(email, person.email);
+                Objects.equals(lastName, person.lastName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, email);
+        return Objects.hash(id, firstName, lastName);
     }
 }
 

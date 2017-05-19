@@ -10,9 +10,8 @@
       <class>io.github.alizarion.common.entities.Person</class>
       <properties>
            <property name="hibernate.hbm2ddl.auto" value="update"/>
-         <property name="hiberdsqdsqnate.hdqsdqsdbm2ddl.auto" value="updqsdqsdate"/>
-
-        </properties>
+           <property name="hibernate.dialect" value="${io.alizarion.jpa.dialect}"/>
+      </properties>
    </persistence-unit>
 
 </persistence>

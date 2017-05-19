@@ -1,23 +1,24 @@
 # generic-jee-archetype
-Simple projet, posposition de structure Maven permettant le multipackaging d'applications JEE
+Projet exemple, prosposition de structure Maven permettant le multipackaging d'applications JEE.
 
 
 
-#pré-requis: 
-Maven 3.1 ou supérieur.    
-JDK 1.7 ou supérieur. 
-
+#Pré-requis: 
+* Maven 3.1 ou supérieur.    
+* JDK 1.7 ou supérieur. 
+* Docker et docker-compose.
 # Build 
+
 * Téléchargez le projet.
-* Dans le répertoire racine, faites un :         
+* Dans le répertoire racine, exécuter la commande:         
         ```mvn clean install```    
 
 
 # L'application 
-une simple application permettant d'effectuer des opérations CRUD sur l'entité Person via des appels Rest.   
+Une simple application permettant d'effectuer des opérations CRUD sur l'entité Person via des appels Rest.   
 
-un client angular permettant de la tester est disponible à cette adresse : 
-http://plnkr.co/edit/rUcZDl04VALMbSgknLPl?p=preview   
+Un client Angular permettant de la tester est disponible à cette adresse : 
+http://plnkr.co/edit/qzLz3AyOzs8JoA6fqFWR?p=preview  
 
 ## Business packages
 
@@ -25,18 +26,18 @@ http://plnkr.co/edit/rUcZDl04VALMbSgknLPl?p=preview
 * `Service` : CDI injectable trasactional services
 * `tools` : Simple helper and tools classes.
 * `rest-api`: JAX-RS exposed Rest Endpoint
-* `persistence` : persistence.xml file for jpa entities
+* `persistence` : persistence.xml file for jpa en
 
 ## Deployable packages
-* `wildfly-package` : deployable war on wildfly
-* `springboot-package` : deployagle springboot app
-* `tomcat-package` : deployable war on tomcat 8
+Pour chaque package, les déploiements possibles sont Wildfly et Tomcat (packaging .war).
+* `deliverable` : Déployer sur un serveur installé localement.
+* `docker` : Contient les images Docker avec les serveurs d'applications et le .war à déployer
 
 # L'objectif
 
 Structurer les imports des projets afin de restreindre l'utilisation des frameworks aux standards JEE et réduire l'adhérence du code à des librairies tierces.
 les package metiers ont pour seul dépendance javaee
-les packages (wildfly-package et springboot-package) peuvent étendre les dépendances du parent avec des libs liés à leurs environnement de déploiement, ces derniers ne doivent contenir aucune intelligence, pas de code fonctionnel.
+les packages (deliverable et docker) peuvent étendre les dépendances du parent avec des librairoes liées à leurs environnements de déploiement, ces derniers ne doivent contenir aucune intelligence, pas de code fonctionnel.
 
 # L'application utilise les standards suivants: 
 * JPA(Java Persistence) JSR-338 
@@ -54,7 +55,7 @@ les packages (wildfly-package et springboot-package) peuvent étendre les dépen
 Pas besoin d'installer wildfly maven le fera pour vous.
 * `cd generic-jee-archetype`  
 * `mvn clean install`
-* `cd wildfly-package`   
+* `cd deliverable/wildfly-package`   
 * `mvn wildfly:run -Dwildfly.version=8.2.0.Final`
 
 # Spring-boot 
@@ -68,7 +69,7 @@ Pas besoin d'installer wildfly maven le fera pour vous.
 * Téléchargez le projet
 * `cd generic-jee-archetype`  
 * `mvn clean install `  
-* `cd springboot-package`  
+* `cd deliverable/springboot/fatjar`  
 * `mvn clean install`
 * `mvn spring-boot:run`   
 
@@ -84,7 +85,15 @@ Pas besoin d'installer wildfly maven le fera pour vous.
 * Téléchargez le projet
 * `cd generic-jee-archetype`
 * `mvn clean install `
-* `cd tomcat-package`
+* `cd deliverable/springboot/fatjar
 * `mvn clean install`
-* `mvn tomcat7:run-war`
+* `mvn tomcat7:run-war``
+
+# Docker 
+
+* Téléchargez le projet
+* `cd generic-jee-archetype`
+* `mvn clean install -P docker`
+* `cd docker`
+* `ocker-compose up`
 

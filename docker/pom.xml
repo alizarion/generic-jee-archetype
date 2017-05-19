@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <groupId>io.github.alizarion.common</groupId>
+        <artifactId>javaee7-archetype</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <modules>
+        <module>generic-app-springboot</module>
+        <module>generic-app-wildfly</module>
+    </modules>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>io.github.alizarion.common.docker</groupId>
+    <artifactId>person-docker</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+
+    <dependencies>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>0.4.13</version>
+                    <configuration>
+                        <imageTags>
+                            <imageTag>${project.version}${instance.name}</imageTag>
+
+                            <imageTag>latest</imageTag>
+                        </imageTags>
+                        <serverId>registry-itesoft</serverId>
+
+                        <imageName>${project.artifactId}</imageName>
+
+                        <dockerDirectory>${project.basedir}</dockerDirectory>
+                        <!--<registryUrl>${project.registryUrl}</registryUrl>-->
+
+                    </configuration>
+                    <executions>
+
+                        <execution>
+
+                            <id>build-image</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>build</goal>
+                            </goals>
+                            <configuration>
+                              <imageTags>
+                                  <imageTag>${project.version}${instance.name}</imageTag>
+                              </imageTags>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>tag-version</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>tag</goal>
+                            </goals>
+                            <configuration>
+                                <image>${project.artifactId}:${project.version}${instance.name}</image>
+                                <newName>${project.artifactId}:${project.version}${instance.name}</newName>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>tag-latest</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>tag</goal>
+                            </goals>
+                            <configuration>
+                                <image>${project.artifactId}:latest</image>
+                                <newName>${project.artifactId}:latest</newName>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>push-image</id>
+                            <phase>deploy</phase>
+                            <goals>
+                                <goal>push</goal>
+                            </goals>
+                            <configuration>
+                                <imageName>${project.artifactId}</imageName>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>

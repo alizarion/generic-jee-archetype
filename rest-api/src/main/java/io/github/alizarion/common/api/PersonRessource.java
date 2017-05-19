@@ -1,6 +1,6 @@
 package io.github.alizarion.common.api;
 
-import io.github.alizarion.common.entities.Person;
+import io.github.alizarion.common.entities.*;
 import io.github.alizarion.common.services.EntityFacade;
 
 import javax.inject.Inject;
@@ -8,7 +8,9 @@ import javax.inject.Named;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author selim@openlinux.fr.
@@ -51,6 +53,6 @@ public class PersonRessource {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/test")
     public Person testMethod(){
-        return new Person("selim","bensenouci","selim@openlinux.fr");
+        return new Person("selim","bensenouci");
     }
 }
