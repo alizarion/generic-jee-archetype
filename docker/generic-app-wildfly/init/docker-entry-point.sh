@@ -17,6 +17,7 @@ echo "[Generic-Entry-Point] JBOSS_CONFIG: " $JBOSS_CONFIG
 export PGPASSWORD=$DATASOURCE_PASSWORD
 
 
+
 if [ -z $DATASOURCE_HOST ] && [ -z  $DATASOURCE_USER ] && [ -z  $DATASOURCE_PASSWORD ] && [ -z  $DATASOURCE_CATALOG ] && [ -z  $DATASOURCE_PORT ] && [ -z  $DATASOURCE_DDL ]; then
 echo -e "[Generic-Entry-Point] \e[31mNo parameters specified ; server will start with default parameters.\e[0m";
 
