@@ -17,7 +17,7 @@ public class MyCustomPrincipal  implements Principal {
 
     @Override
     public String getName() {
-        return null;
+        return (String) publicClaims.get("email");
     }
 
     public Map<String, Object> getPublicClaims() {

@@ -64,8 +64,9 @@ public class PersonRessource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @PermitAll
     @Path("/user")
-    public MyCustomPrincipal testMethod(@Context SecurityContext securityContext){
+    public MyCustomPrincipal currentUser(@Context SecurityContext securityContext){
         return (MyCustomPrincipal) securityContext.getUserPrincipal();
     }
 }
