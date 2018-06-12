@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="itesoft-showcase">
+
+  <head>
+    <script data-require="angular-resource@1.4.1" data-semver="1.4.1" src="https://code.angularjs.org/1.4.1/angular-resource.js"></script>
+    <script src="http://alizarion.github.io/angular-common/docs/js/marked.js"></script>
+    <script src="http://alizarion.github.io/angular-common/docs/js/dist/assets/lib/vendor.min.js"></script>
+    <script src="http://alizarion.github.io/angular-common/docs/js/dist/app/itesoft.debug.js"></script>
+    <link rel="stylesheet" href="http://alizarion.github.io/angular-common/docs/css/dist/assets/fonts/itesoft-default-bundle.min.css" type="text/css" />
+    <script src="Module.js"></script>
+    <script src="controller.js"></script>
+  </head>
+
+  <body>
+    
+    <div class="container-fluid" ng-controller="HomeCtrl">
+      <h3>Pensez à changer l'url de la ressource Person si vous changez les ports</h3>
+      <hr>
+      <div class="jumbotron">
+        
+     
+      <form class="form-group"  name="myForm" ng-submit="submit(myForm)">
+        <h4>Informations générales</h4>
+        <div class="form-group">
+          <input it-input="" class="form-control floating-label" required="true" type="text" it-label="Nom" name="lastName" ng-model="person.lastName" />
+        </div>
+        <div class="form-group">
+          <input it-input="" class="form-control floating-label" required="true"  type="text" it-label="Prénom" name="Prenom" ng-model="person.firstName" />
+        </div>
+        <div class="form-errors" ng-messages="myForm.$error" style="color: red;">
+          <div class="form-error" ng-message="required">all fields are required</div>
+        </div>
+        <button ng-disabled="!myForm.$valid"  class="btn btn-primary" type="submit">submit</button>
+      </form>
+       </div>
+       <it-loader></it-loader>
+         <table class="table table-striped table-hover ">
+         <thead>
+         <tr>
+         <th>#ID</th>
+         <th>firstName</th>
+         <th>LastName</th>
+         </tr>
+         </thead>
+         <tbody>
+         <tr ng-repeat="person in persons">
+         <td>{{person.id}}</td>
+         <td>{{person.firstName}}</td>
+         <td>{{person.lastName}}</td>
+
+         </tr>
+         </tbody>
+         </table>
+         <div class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div>
+    </div>
+  </body>
+
+</html>

@@ -1,9 +1,6 @@
 package io.github.alizarion;
 
-import io.github.alizarion.common.api.PersonRessource;
 import io.github.alizarion.common.tools.web.filters.AccessControlAllowOriginFilter;
-import org.glassfish.jersey.jackson.JacksonFeature;
-import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -12,14 +9,13 @@ import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
-import javax.inject.Named;
-import javax.ws.rs.ApplicationPath;
-
 /**
  * @author selim@openlinux.fr
  */
 @SpringBootApplication
-@ComponentScan( {"io.github.alizarion"})
+@ComponentScan( {"io.github.alizarion",
+        "com.itesoft.common.utils.security",
+        "com.itesoft.common.properties"})
 public class Application extends SpringBootServletInitializer {
 
     private static Class<Application> appClass = Application.class;

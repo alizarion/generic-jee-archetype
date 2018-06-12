@@ -22,6 +22,25 @@
             <artifactId>business-entities</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
+
+        <dependency>
+            <artifactId>common-security</artifactId>
+            <groupId>com.itesoft.common</groupId>
+            <version>2.1.0</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>common-security-utils</artifactId>
+            <groupId>com.itesoft.common</groupId>
+            <version>2.1.0</version>
+        </dependency>
+
+        <dependency>
+            <artifactId>common-properties</artifactId>
+            <groupId>com.itesoft.common</groupId>
+            <version>2.1.0</version>
+        </dependency>
+
         <dependency>
             <groupId>io.github.alizarion.common.services</groupId>
             <artifactId>services</artifactId>
